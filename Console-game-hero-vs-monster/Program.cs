@@ -19,7 +19,7 @@ namespace Console_game_hero_vs_monster
             Console.ReadLine();
             if (dead)
             {
-                Console.WriteLine("You are dead better luck next time!");
+                Console.WriteLine($"You are dead better luck next time! you survived {rounds} rounds");
 
             }
             else
@@ -74,7 +74,7 @@ namespace Console_game_hero_vs_monster
          private static void HeroVsMonster(int ATK, int DEF)
             {
                 var attack = new Random() ;
-                var HPhero = 150 - ATK;
+                var HPhero = 150 - ATK - ATK;
                 var HPMonster = 100;
                 while (HPhero > 0 && HPMonster > 0)
                 {
@@ -102,6 +102,7 @@ namespace Console_game_hero_vs_monster
                             Console.ResetColor();
                             HPhero = 1;
                             HPMonster = 1;
+                            dead = true;
                             break;
                         }
                     var currentAttackMonster = attack.Next(10 - DEF, 30 - DEF);
