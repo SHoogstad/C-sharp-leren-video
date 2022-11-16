@@ -24,10 +24,10 @@ namespace Console_game_hero_vs_monster
             }
             else
             {
-                atk = findEquipment(atk);
+                atk = FindEquipment(atk);
                 Console.ReadLine();
 
-                def = findArmor(def);
+                def = FindArmor(def);
                 Console.ReadLine();
 
                 rounds++;
@@ -39,30 +39,30 @@ namespace Console_game_hero_vs_monster
             }
         }
 
-        private static int findEquipment(int atk)
+        private static int FindEquipment(int atk)
         {
             var random = new Random().Next(1, 10);
 
             if (random == 5)
             {
-                var newATK = new Random().Next(1, 4);
-                Console.WriteLine($"You found a better sword ATK increased by {newATK} ");
-                return atk + newATK;
+                var newAtk = new Random().Next(1, 4);
+                Console.WriteLine($"You found a better sword ATK increased by {newAtk} ");
+                return atk + newAtk;
             } 
             
             Console.WriteLine("found nothing :(");
             
             return atk;
         }
-        private static int findArmor(int def)
+        private static int FindArmor(int def)
         {
             var random = new Random().Next(1, 10);
 
             if (random == 5)
             {
-                var newDEF = new Random().Next(1, 3);
-                Console.WriteLine($"You found a betteR armor DEF increased by {newDEF} ");
-                return def + newDEF;
+                var newDef = new Random().Next(1, 3);
+                Console.WriteLine($"You found a betteR armor DEF increased by {newDef} ");
+                return def + newDef;
             }
             Console.WriteLine("found nothing :(");
             
