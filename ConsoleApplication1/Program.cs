@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.CodeDom;
 
 namespace ConsoleApplication1
 {
@@ -7,6 +8,8 @@ namespace ConsoleApplication1
     {
         public static void Main(string[] args)
         {
+            Console.ReadLine();
+            FizzBuzz_2();
             Console.ReadLine();
         }
 
@@ -67,7 +70,6 @@ namespace ConsoleApplication1
                         Console.WriteLine(i);
                 }
             }
-            
         //
     }
 }
