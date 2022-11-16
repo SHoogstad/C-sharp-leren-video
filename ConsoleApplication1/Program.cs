@@ -7,16 +7,6 @@ namespace ConsoleApplication1
     {
         public static void Main(string[] args)
         {
-            // Hello();
-            // Console.WriteLine(HelloReturn());
-            // var number = Console.ReadLine();
-            // if (number != null)
-            // {
-            //     var num = int.Parse(number);
-            //     Console.WriteLine(Cube(num));
-            // }
-            FizzBuzz();
-
             Console.ReadLine();
         }
 
@@ -53,10 +43,10 @@ namespace ConsoleApplication1
                 {
                     if (i % 3 == 0)
                     {
-                        Console.WriteLine($"{i} fizz");
+                        Console.WriteLine($"{i} - fizz");
                     }else if (i % 5 == 0)
                     {
-                        Console.WriteLine($"{i} buzz");
+                        Console.WriteLine($"{i} - buzz");
                     }
                     else
                     {
@@ -64,6 +54,20 @@ namespace ConsoleApplication1
                     }
                 }
             }
+            
+            private static void FizzBuzz_2()
+            {
+                for (var i = 1; i < 101; i++)
+                {
+                    if (i % 3 == 0)
+                        Console.WriteLine($"{i} - fizz");
+                    else if (i % 5 == 0)
+                        Console.WriteLine($"{i} - buzz");
+                    else
+                        Console.WriteLine(i);
+                }
+            }
+            
         //
     }
 }
