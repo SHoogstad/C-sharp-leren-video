@@ -9,7 +9,7 @@ namespace ConsoleApplication1
         public static void Main(string[] args)
         {
             Console.ReadLine();
-            FizzBuzz_2();
+            HeroVsMonster();
             Console.ReadLine();
         }
 
@@ -71,5 +71,37 @@ namespace ConsoleApplication1
                 }
             }
         //
+        
+        
+        // While loop Hero Vs Monster
+        private static void HeroVsMonster()
+        {
+            var attack = new Random() ;
+            var HPhero = 100;
+            var HPMonster = 100;
+            while (HPhero > 0 && HPMonster > 0)
+            {
+                var currentAttackHero = attack.Next(5, 25);
+                HPMonster -= currentAttackHero;
+                Console.WriteLine($"Hero attacked the Monster Lost {currentAttackHero} HP, Monster HP now is {HPMonster}");
+                if (HPMonster <= 0) break;
+                var currentAttackMonster = attack.Next(6, 23);
+                HPhero -= currentAttackMonster;
+                Console.WriteLine($"Monster attacked the Hero Lost {currentAttackMonster} HP, Monster HP now is {HPhero}");
+            }
+
+            if (HPMonster <= 0)
+            {            
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Hero won! with {HPhero}HP left");
+                Console.ResetColor();
+            }
+            else if (HPhero <= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Monster won! with {HPMonster}HP left");
+                Console.ResetColor();
+            }
+        }
     }
 }

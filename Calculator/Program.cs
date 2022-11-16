@@ -53,9 +53,6 @@ namespace Calculator
                     Main();
                     break;
             }
-
-
-            Console.ReadLine();
         }
     }
 }
