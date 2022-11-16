@@ -1,95 +1,92 @@
-﻿
-using System;
-using System.CodeDom;
+﻿using System;
+using System.Diagnostics;
 
-namespace ConsoleApplication1
+namespace Console_game_hero_vs_monster
 {
-    internal static class Program
+    internal class Program
     {
+        private static readonly int firstATK = 0;
+        private static readonly int firstDEF = 0;
+        private static bool dead = false;
         public static void Main()
-        {
-            HeroVsMonster();
-            Console.ReadLine();
-            Main();
+        { 
+            run(firstATK, firstDEF, 0);
         }
 
-        // methods 
-            private static void Hello()
+        private static void run(int atk, int def, int rounds)
+        {
+            HeroVsMonster(atk, def);
+            Console.ReadLine();
+            if (dead)
             {
-                Console.Write("Enter your name:");
-                var name = Console.ReadLine(); // wanneer je een variable gelijk initialised gebruik var anders type
-                var message = $"hello {name}!"; 
-                Console.WriteLine(message);
-            }
-        //
-        
-        // return types
-            private static string HelloReturn()
-            {
-                Console.Write("Enter your name:");
-                var name = Console.ReadLine();
-                var message = $"hello {name}!";
-                return message;
-            }
+                Console.WriteLine("You are dead better luck next time!");
 
-            private static int Cube(int number)
-            {
-                number = number * number * number;
-                return number;
             }
-        //
-        
-        // fizz buzz (if statements and loops)
-            private static void FizzBuzz()
+            else
             {
-                for (var i = 1; i < 101; i++)
-                {
-                    if (i % 3 == 0)
-                    {
-                        Console.WriteLine($"{i} - fizz");
-                    }else if (i % 5 == 0)
-                    {
-                        Console.WriteLine($"{i} - buzz");
-                    }
-                    else
-                    {
-                        Console.WriteLine(i);
-                    }
-                }
+                atk = findEquipment(atk);
+                Console.ReadLine();
+
+                def = findArmor(def);
+                Console.ReadLine();
+
+                rounds++;
+
+                Console.WriteLine($"ATK {atk}, DEF {def}, Rounds Survied: {rounds}");
+                Console.ReadLine();
+
+                run(atk, def, rounds);
             }
+        }
+
+        private static int findEquipment(int atk)
+        {
+            var random = new Random().Next(1, 10);
+
+            if (random == 5)
+            {
+                var newATK = new Random().Next(1, 4);
+                Console.WriteLine($"You found a better sword ATK increased by {newATK} ");
+                return atk + newATK;
+            } 
             
-            private static void FizzBuzz_2()
+            Console.WriteLine("found nothing :(");
+            
+            return atk;
+        }
+        private static int findArmor(int def)
+        {
+            var random = new Random().Next(1, 10);
+
+            if (random == 5)
             {
-                for (var i = 1; i < 101; i++)
-                {
-                    if (i % 3 == 0)
-                        Console.WriteLine($"{i} - fizz");
-                    else if (i % 5 == 0)
-                        Console.WriteLine($"{i} - buzz");
-                    else
-                        Console.WriteLine(i);
-                }
+                var newDEF = new Random().Next(1, 3);
+                Console.WriteLine($"You found a betteR armor DEF increased by {newDEF} ");
+                return def + newDEF;
             }
-        //
+            Console.WriteLine("found nothing :(");
+            
+            return def;
+        }
+
         
         
-        // While loop Hero Vs Monster
-            private static void HeroVsMonster()
+         private static void HeroVsMonster(int ATK, int DEF)
             {
                 var attack = new Random() ;
-                var HPhero = 100;
+                var HPhero = 150 - ATK;
                 var HPMonster = 100;
                 while (HPhero > 0 && HPMonster > 0)
                 {
-                    var currentAttackHero = attack.Next(5, 25);
+                    var currentAttackHero = attack.Next(5 + ATK, 25 + ATK) ;
                     HPMonster -= currentAttackHero;
                     Console.WriteLine($"Hero attacked the Monster Lost {currentAttackHero} HP, Monster HP now is {HPMonster}");
                     
                     var selfDestruct = new Random().Next(1, 10);
-                        if (selfDestruct != 5 )
+                        if (selfDestruct != 5)
                         {
                             if (HPMonster <= 0) break;
-                        } else
+                        } else if (HPMonster > 0)
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             
@@ -107,7 +104,7 @@ namespace ConsoleApplication1
                             HPMonster = 1;
                             break;
                         }
-                    var currentAttackMonster = attack.Next(6, 23);
+                    var currentAttackMonster = attack.Next(10 - DEF, 30 - DEF);
                     HPhero -= currentAttackMonster;
                     Console.WriteLine($"Monster attacked the Hero Lost {currentAttackMonster} HP, Hero HP now is {HPhero}");
                 }
@@ -123,8 +120,8 @@ namespace ConsoleApplication1
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Monster won! with {HPMonster}HP left");
                     Console.ResetColor();
+                    dead = true;
                 }
             }
-        //
     }
 }
