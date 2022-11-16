@@ -93,7 +93,7 @@ namespace ConsoleApplication1
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             HPMonster = 1; // to fix that you don't get false win condition
-                            Console.WriteLine($"Monster self destructed!. The Hero and the Monster both are dead");
+                            Console.WriteLine("Monster self destructed!. The Hero and the Monster both are dead");
                             Console.ResetColor();
                             break;
                         }
