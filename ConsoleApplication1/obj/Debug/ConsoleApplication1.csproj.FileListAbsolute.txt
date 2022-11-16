@@ -1,6 +1,0 @@
-/Users/23g/Sites/C-sharp-leren-video/ConsoleApplication1/bin/Debug/ConsoleApplication1.exe
-/Users/23g/Sites/C-sharp-leren-video/ConsoleApplication1/bin/Debug/ConsoleApplication1.pdb
-/Users/23g/Sites/C-sharp-leren-video/ConsoleApplication1/obj/Debug/ConsoleApplication1.csproj.AssemblyReference.cache
-/Users/23g/Sites/C-sharp-leren-video/ConsoleApplication1/obj/Debug/ConsoleApplication1.csproj.CoreCompileInputs.cache
-/Users/23g/Sites/C-sharp-leren-video/ConsoleApplication1/obj/Debug/ConsoleApplication1.exe
-/Users/23g/Sites/C-sharp-leren-video/ConsoleApplication1/obj/Debug/ConsoleApplication1.pdb
