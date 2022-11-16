@@ -6,11 +6,11 @@ namespace ConsoleApplication1
 {
     internal static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            Console.ReadLine();
             HeroVsMonster();
             Console.ReadLine();
+            Main();
         }
 
         // methods 
@@ -74,34 +74,49 @@ namespace ConsoleApplication1
         
         
         // While loop Hero Vs Monster
-        private static void HeroVsMonster()
-        {
-            var attack = new Random() ;
-            var HPhero = 100;
-            var HPMonster = 100;
-            while (HPhero > 0 && HPMonster > 0)
+            private static void HeroVsMonster()
             {
-                var currentAttackHero = attack.Next(5, 25);
-                HPMonster -= currentAttackHero;
-                Console.WriteLine($"Hero attacked the Monster Lost {currentAttackHero} HP, Monster HP now is {HPMonster}");
-                if (HPMonster <= 0) break;
-                var currentAttackMonster = attack.Next(6, 23);
-                HPhero -= currentAttackMonster;
-                Console.WriteLine($"Monster attacked the Hero Lost {currentAttackMonster} HP, Monster HP now is {HPhero}");
-            }
+                var attack = new Random() ;
+                var HPhero = 100;
+                var HPMonster = 100;
+                while (HPhero > 0 && HPMonster > 0)
+                {
+                    var currentAttackHero = attack.Next(5, 25);
+                    HPMonster -= currentAttackHero;
+                    Console.WriteLine($"Hero attacked the Monster Lost {currentAttackHero} HP, Monster HP now is {HPMonster}");
+                    
+                    var selfDestruct = new Random().Next(1, 10);
+                        if (selfDestruct != 5 )
+                        {
+                            if (HPMonster <= 0) break;
+                        }else
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            HPMonster = 1; // to fix that you don't get false win condition
+                            Console.WriteLine($"Monster self destructed!. The Hero and the Monster both are dead");
+                            Console.ResetColor();
+                            break;
+                        }
+                    
+                    
+                    var currentAttackMonster = attack.Next(6, 23);
+                    HPhero -= currentAttackMonster;
+                    Console.WriteLine($"Monster attacked the Hero Lost {currentAttackMonster} HP, Monster HP now is {HPhero}");
+                }
 
-            if (HPMonster <= 0)
-            {            
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Hero won! with {HPhero}HP left");
-                Console.ResetColor();
+                if (HPMonster <= 0)
+                {            
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Hero won! with {HPhero}HP left");
+                    Console.ResetColor();
+                }
+                else if (HPhero <= 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Monster won! with {HPMonster}HP left");
+                    Console.ResetColor();
+                }
             }
-            else if (HPhero <= 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Monster won! with {HPMonster}HP left");
-                Console.ResetColor();
-            }
-        }
+        //
     }
 }
