@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Console_game_hero_vs_monster
+namespace console-hero-rgp
 {
     internal class Program
     {
@@ -10,12 +10,12 @@ namespace Console_game_hero_vs_monster
         private static bool dead = false;
         public static void Main()
         { 
-            run(firstATK, firstDEF, 0);
+            result(firstATK, firstDEF, 0);
         }
 
-        private static void run(int atk, int def, int rounds)
+        private static void result(int atk, int def, int rounds)
         {
-            HeroVsMonster(atk, def);
+            battle(atk, def);
             Console.ReadLine();
             if (dead)
             {
@@ -35,7 +35,7 @@ namespace Console_game_hero_vs_monster
                 Console.WriteLine($"ATK {atk}, DEF {def}, Rounds Survied: {rounds}");
                 Console.ReadLine();
 
-                run(atk, def, rounds);
+                result(atk, def, rounds);
             }
         }
 
@@ -71,7 +71,7 @@ namespace Console_game_hero_vs_monster
 
         
         
-         private static void HeroVsMonster(int ATK, int DEF)
+         private static void Battle(int ATK, int DEF)
             {
                 var attack = new Random() ;
                 var HPhero = 150 - ATK - ATK;
